@@ -1,0 +1,212 @@
+<?php
+session_start();
+$loggedIn = isset($_SESSION['user_id']);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McAlbert Restaurant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <img src="./images/logo.jpeg" alt="" height="90px">
+        <a class="navbar-brand" href="#">LIBERIAN DISHES</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active home" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+            </ul>
+            <?php if ($loggedIn): ?>
+                <a href="logout.php" class="btn btn-danger">Logout</a>
+            <?php else: ?>
+                <a href="auth.php" class="btn btn-primary">Login</a>
+            <?php endif; ?>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero bg-dark text-white text-center">
+        <div class="container">
+            <h1>Really Fresh & Tasty</h1>
+            <p>Welcome to Our Restaurant</p>
+            <a href="<?php echo $loggedIn ? 'booking.php' : 'auth.php'; ?>" class="btn btn-danger">Book a Table</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        < <div class="container ">
+        <div class="row my-5" id="Restaurant">
+          <div class="col navMenu">
+            <h2 class="text-center"> Restaurant </h2>
+          </div>
+        </div>
+        <div class="row bg-light">
+          <div class="col-md-6">
+            <h3>Location</h3>
+            <p>Liberia Monrovia, Nimba county Ganta city.</p>
+            <h5>Experience</h5>
+            <p>A Culinary Experience Like No Other <br>
+                Step into a world of flavor and hospitality at [Restaurant Name]. Whether you're here for a casual lunch, a romantic dinner, or a celebration, our carefully curated menu and warm ambiance promise to make every moment memorable. Enjoy fresh, locally-sourced ingredients, artfully prepared dishes, and a dining experience that will delight your senses.
+                
+                Reserve your table today and let us create an unforgettable dining experience for you and your loved ones.
+                
+                </p>
+          </div>
+          <div class="col-md-6 " ><img src="./images/about1.jpg" alt="about1" class="img-fluid"></div>
+        </div>
+        <div class="row bg-light"><br>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-5 bg-light">
+        <div class="container text-center">
+            <h2>Our Menu</h2>
+            <div class="row g-4">
+                <!-- Example Menu Item -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="card shadow-lg p-3">
+                        <img src="images/menu8.jpg" class="img-fluid rounded" alt="Dish 1">
+                        <div class="card-body">
+                            <h4>Red Oil Okra with Rice</h4>
+                            <p>$2.99</p>
+                            <a href="<?php echo $loggedIn ? 'order.php?item=Red%20Oil%20Okra%20with%20Rice&price=2' : 'auth.php'; ?>" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat for other menu items -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="card shadow-lg p-3">
+                        <img src="images/menu2.jpg" class="img-fluid rounded" alt="Dish 2">
+                        <div class="card-body">
+                            <h4>Pepper Soup with Fufu</h4>
+                            <p>$8.99</p>
+                            <a href="<?php echo $loggedIn ? 'order.php?item=Pepper%20Soup%20with%20Fufup&price=8.99' : 'auth.php'; ?>" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card shadow-lg p-3">
+                        <img src="images/menu3.jpg" class="img-fluid rounded" alt="Dish 3">
+                        <div class="card-body">
+                            <h4>Palm Butter Soup</h4>
+                            <p>$5.99</p>
+                            <a href="<?php echo $loggedIn ? 'order.php?item=Palm%20Butter%20Soup&price=5.99' : 'auth.php'; ?>" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card shadow-lg p-3">
+                        <img src="images/menu4.jpg" class="img-fluid rounded" alt="Dish 4">
+                        <div class="card-body">
+                            <h4>Jollof Rice</h4>
+                            <p>$15.99</p>
+                            <a href="<?php echo $loggedIn ? 'order.php?item=Jollof%20Rice&price=15.99' : 'auth.php'; ?>" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card shadow-lg p-3">
+                        <img src="images/menu5.jpg" class="img-fluid rounded" alt="Dish 5">
+                        <div class="card-body">
+                            <h4>Kidney Beans With Rice</h4>
+                            <p>$10.99</p>
+                            <a href="<?php echo $loggedIn ? 'order.php?Kidney%20Beans%20With%20Ricep&price=10.99' : 'auth.php'; ?>" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card shadow-lg p-3">
+                        <img src="images/menu10.jpg" class="img-fluid rounded" alt="Dish 6">
+                        <div class="card-body">
+                            <h4>Fried Fish with Rice</h4>
+                            <p>$15.99</p>
+                            <a href="<?php echo $loggedIn ? 'order.php?item=Fried%20Fish%20with%20Rice&price=15.99' : 'auth.php'; ?>" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card shadow-lg p-3">
+                        <img src="images/menu1.jpg" class="img-fluid rounded" alt="Dish 7">
+                        <div class="card-body">
+                            <h4>Vegetable Fried Rice with Fish</h4>
+                            <p>$19</p>
+                            <a href="<?php echo $loggedIn ? 'order.php?item=Vegetable%20Fried%20Ric%20with%20Fish&price=19' : 'auth.php'; ?>" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card shadow-lg p-3">
+                        <img src="images/menu7.jpg" class="img-fluid rounded" alt="Dish 8">
+                        <div class="card-body">
+                            <h4>Check Rice Fried Fish</h4>
+                            <p>$5.99</p>
+                            <a href="<?php echo $loggedIn ? 'order.php?item=Check%20Rice%20Fried%20Fish&price=5.99' : 'auth.php'; ?>" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card shadow-lg p-3">
+                        <img src="images/menu6.png" class="img-fluid rounded" alt="Dish 9">
+                        <div class="card-body">
+                            <h4>Fried Fish With Plantains/h4>
+                            <p>$20.99</p>
+                            <a href="<?php echo $loggedIn ? 'order.php?item=Fried%20Fish%20With%20Plantains&price=20.99' : 'auth.php'; ?>" class="btn btn-primary">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class='footer'>
+        <div class="footer-logo">
+            <img src={footer_logo} alt="" />
+            <p>LIBERIAN DISHES</p>
+        </div>
+        <ul class="footer-links">
+            <a href="#home"><li>Home</li></a>
+            <a href="#menu"><li>Foods</li></a>
+            <a href="#about"><li>About</li></a>
+        </ul>
+        
+        <div class="footer-social-icons">
+            <div class="footer-icons-container">
+                <img src="images/instagram_icon.png" alt="" />
+            </div>
+            <div class="footer-icons-container">
+                <img src="images/pintester_icon.png" alt="" />
+            </div>
+            <div class="footer-icons-container">
+                <img src="images/whatsapp_icon.png" alt="" />
+            </div>
+        </div>
+        <ul class="footer-links">
+          <li>+231-880852486</li>
+          <li>mcalbertgoodluck564@gmail.com</li>
+      </ul>
+        <div class="footer-copyright">
+            <hr />
+            <p>Copyright @ 2024 - All right Reserved.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
